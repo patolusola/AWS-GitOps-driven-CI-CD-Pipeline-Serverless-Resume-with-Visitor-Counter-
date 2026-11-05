@@ -14,7 +14,7 @@ provider "aws" {
 
 # my s3 bucket (it hosts my website's code and images)
 resource "aws_s3_bucket" "frontend_bucket" {
-  bucket = "pat-gitops-driven-project-bucket"
+  bucket = "pat-gitops-driven-project-bucket188"
 }
 
 # my DynamoDB table (sort of a digital notebook where my app stores info)
