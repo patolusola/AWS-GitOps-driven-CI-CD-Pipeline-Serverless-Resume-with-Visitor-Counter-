@@ -1,0 +1,28 @@
+name: Build My AWS Project
+
+on:
+  push:
+    branches:
+      - main # my robot wakes up whenever i send new code to the main branch
+
+jobs:
+  build-it:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Open the project box
+        uses: actions/checkout@v4
+
+      - name: 2. Put on the AWS VIP Pass
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: 3. Get the Terraform tools ready
+        uses: hashicorp/setup-terraform@v3
+
+      - name: 4. Build the blueprints in AWS!
+        run: |
+          terraform init
+          terraform apply -auto-approve
