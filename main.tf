@@ -121,3 +121,13 @@ resource "aws_s3_bucket_policy" "public_read" {
     ]
   })
 }
+
+
+# this opens the brain's door for the public access
+resource "aws_lambda_permission" "allow_public_brain_door" {
+  statement_id           = "AllowPublicInvoke"
+  action                 = "lambda:InvokeFunctionUrl"
+  function_name          = aws_lambda_function.backend_brain.function_name
+  principal              = "*"
+  function_url_auth_type = "NONE"
+}
