@@ -131,3 +131,20 @@ resource "aws_lambda_permission" "allow_public_brain_door" {
   principal              = "*"
   function_url_auth_type = "NONE"
 }
+
+
+# grant permission to the brain to access the database
+resource "aws_iam_role_policy" "lambda_dynamodb_policy" {
+  name   = "lambda-dynamodb-policy"
+  role   = aws_iam_role.lambda_role.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action   = ["dynamodb:UpdateItem", "dynamodb:GetItem"]
+        Effect   = "Allow"
+        Resource = aws_dynamodb_table.backend_database.arn
+      }
+    ]
+  })
+}

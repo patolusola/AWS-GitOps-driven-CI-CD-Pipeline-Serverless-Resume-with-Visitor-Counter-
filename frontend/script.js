@@ -13,3 +13,24 @@ themeBtn.addEventListener('click', () => {
         themeBtn.textContent = '☀️ Light Mode';
     }
 });
+
+
+// got my visitor counter here //
+
+const apiURL = "https://uqfhs7qggjdnlilzl5t2cl7qey0bahis.lambda-url.us-east-1.on.aws/";
+
+async function getVisitorCount() {
+    try {
+        // knock on the brain's door
+        const response = await fetch(apiURL);
+        const data = await response.json();
+        
+        // input the number on the screen
+        document.getElementById('visitor-count').textContent = data.views;
+    } catch (error) {
+        console.error("Error fetching count:", error);
+    }
+}
+
+// this runs the function as soon as the website loads
+getVisitorCount();
