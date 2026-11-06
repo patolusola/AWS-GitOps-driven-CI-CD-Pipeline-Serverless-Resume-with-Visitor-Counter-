@@ -1,10 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>PAT Olusola Cloud Engineeering Resume</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAT Olusola | Cloud Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to PAT's GitOps-driven CI/CD pipeline serverless Project!</h1>
-    <p>This website is hosted completely on AWS.</p>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">PAT.</div>
+        <div class="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <button id="theme-toggle" class="theme-btn">☀️ Light Mode</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="hero-text">
+            <h1>Hi, I'm <span class="highlight">PAT Olusola</span></h1>
+            <p>Cloud Engineer | AWS Architect | Technical Problem Solver</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View My Work</a>
+                <!-- This line triggers the PDF download -->
+                <a href="PAT_Olusola_CV.pdf" target="_blank" rel="noopener" download class="btn outline-btn">📄 Download my CV</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about" class="about-section">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>I am a Cloud Engineer based in the UK, specializing in building scalable, serverless architectures and automated CI/CD pipelines. With a strong foundation in AWS, Terraform, and Python, I focus on provisioning secure and highly available infrastructure.</p>
+            <p>My professional journey is unique. My background spans from executing digital marketing and web design as the Co-founder of DSGNCorp, to developing a rigorous, person-centered work ethic in the UK healthcare and adult care sector. This combination means I approach technical engineering with exceptional attention to procedural accuracy, empathy for end-users, and a pragmatic, solution-oriented mindset.</p>
+            <p>Whether I am designing a GitOps pipeline or automating cloud processes, I am driven by a passion for continuous learning and delivering impactful digital solutions.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <h3>Serverless Cloud Resume</h3>
+                <p>A fully automated GitOps pipeline building an AWS serverless architecture using S3, Lambda, DynamoDB, and Terraform. Features a public frontend with a dynamic API backend.</p>
+                <div class="tags">
+                    <span>AWS</span><span>Terraform</span><span>GitHub Actions</span><span>Python</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>Serverless Image Compressor</h3>
+                <p>A fully automated GitOps pipeline building an AWS serverless architecture using S3, Lambda, DynamoDB, and Terraform. Features a public frontend with a dynamic API backend.</p>
+                <div class="tags">
+                    <span>AWS</span><span>Terraform</span><span>GitHub Actions</span><span>Python</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer & Visitor Counter -->
+    <footer id="contact">
+        <div class="counter-box">
+            <p>Page Views: <span id="visitor-count" class="highlight">Loading...</span></p>
+        </div>
+        <p>Connect with me on <a href="https://www.linkedin.com/in/patolusola/">LinkedIn</a> or <a href="https://github.com/patolusola">GitHub</a></p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
