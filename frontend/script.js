@@ -26,7 +26,7 @@ async function getVisitorCount() {
         const data = await response.json();
         
         // input the number on the screen
-        document.getElementById('visitor-count').textContent = data.views;
+        document.getElementById('visitor-count').textContent = data.visit_count;
     } catch (error) {
         console.error("Error fetching count:", error);
     }
