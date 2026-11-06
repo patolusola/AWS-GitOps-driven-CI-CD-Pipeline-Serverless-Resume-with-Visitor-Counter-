@@ -14,7 +14,7 @@ provider "aws" {
 
 # my s3 bucket (it hosts my website's code and images)
 resource "aws_s3_bucket" "frontend_bucket" {
-  bucket = "pat-gitops-driven-project-bucket188"
+  bucket = "pat-gitops-driven-project-bucket"
 }
 
 # my DynamoDB table (sort of a digital notebook where my app stores info)
@@ -78,4 +78,40 @@ resource "aws_lambda_function_url" "brain_door" {
 # this is the access point of my function
 output "brain_door_address" {
   value = aws_lambda_function_url.brain_door.function_url
+}
+
+
+# this is to inform aws the bucket would be hosting a website
+resource "aws_s3_bucket_website_configuration" "frontend_website" {
+  bucket = aws_s3_bucket.frontend_bucket.id
+  index_document {
+    suffix = "index.html"
+  }
+}
+
+# this turns off security locks  
+resource "aws_s3_bucket_public_access_block" "public_access" {
+  bucket                  = aws_s3_bucket.frontend_bucket.id
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+# this allows public access and permission to read the files
+resource "aws_s3_bucket_policy" "public_read" {
+  bucket = aws_s3_bucket.frontend_bucket.id
+  depends_on = [aws_s3_bucket_public_access_block.public_access]
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid       = "PublicReadGetObject"
+        Effect    = "Allow"
+        Principal = "*"
+        Action    = "s3:GetObject"
+        Resource  = "${aws_s3_bucket.frontend_bucket.arn}/*"
+      }
+    ]
+  })
 }

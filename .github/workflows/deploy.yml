@@ -26,3 +26,6 @@ jobs:
         run: |
           terraform init
           terraform apply -auto-approve
+
+      - name: 5. Put the Website in the Bucket
+        run: aws s3 sync ./frontend s3://pat-gitops-driven-project-bucket
