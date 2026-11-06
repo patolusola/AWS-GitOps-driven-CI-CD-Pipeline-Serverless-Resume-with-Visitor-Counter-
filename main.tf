@@ -6,6 +6,12 @@ terraform {
       version = "~> 5.0"
     }
   }
+  # here is my terraform memory bank
+  backend "s3" {
+    bucket = "pat-terraform-memory-bank" 
+    key    = "state/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 provider "aws" {
