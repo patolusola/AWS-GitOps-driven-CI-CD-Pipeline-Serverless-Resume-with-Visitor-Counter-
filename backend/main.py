@@ -5,7 +5,14 @@ dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('serverless-database')
 
 def handler(event, context):
-    # instruct the database to find the visitors tally and add it +1
+    # ignore when the browser asks for an favicon icon
+    if event.get('rawPath') == '/favicon.ico':
+        return {
+            'statusCode': 200,
+            'body': json.dumps('Ignored favicon')
+        }
+
+    # then count the visitor normally
     response = table.update_item(
         Key={'id': 'visitors'},
         UpdateExpression='ADD visit_count :inc',
@@ -13,14 +20,9 @@ def handler(event, context):
         ReturnValues='UPDATED_NEW'
     )
     
-    # extract the most recent total number from the database response
     count = int(response['Attributes']['visit_count'])
     
-    # send the total number back to the website
     return {
         'statusCode': 200,
-        'headers': {
-            'Access-Control-Allow-Origin': '*' 
-        },
         'body': json.dumps({'visit_count': count})
     }
