@@ -1,12 +1,9 @@
 // Find the button on the page
 const themeBtn = document.getElementById('theme-toggle');
 
-// Listen for a click on the button
+// the dark and light mode toggle
 themeBtn.addEventListener('click', () => {
-    // Flip the switch: add or remove the 'light-mode' class
     document.body.classList.toggle('light-mode');
-    
-    // Change the button text depending on which mode is active
     if (document.body.classList.contains('light-mode')) {
         themeBtn.textContent = '🌙 Dark Mode';
     } else {
@@ -14,23 +11,24 @@ themeBtn.addEventListener('click', () => {
     }
 });
 
-
 // got my visitor counter here //
-
 const apiURL = "https://uqfhs7qggjdnlilzl5t2cl7qey0bahis.lambda-url.us-east-1.on.aws/";
 
 async function getVisitorCount() {
+    console.log("1. Knocking on the Brain's door...");
     try {
-        // knock on the brain's door
         const response = await fetch(apiURL);
-        const data = await response.json();
+        console.log("2. The door opened! Raw response:", response);
         
-        // input the number on the screen
+        const data = await response.json();
+        console.log("3. The data inside is:", data);
+        
         document.getElementById('visitor-count').textContent = data.visit_count;
+        console.log("4. Successfully updated the website!");
     } catch (error) {
         console.error("Error fetching count:", error);
+        document.getElementById('visitor-count').textContent = "Error";
     }
 }
 
-// this runs the function as soon as the website loads
 getVisitorCount();
