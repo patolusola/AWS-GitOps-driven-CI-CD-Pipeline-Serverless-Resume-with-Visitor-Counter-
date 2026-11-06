@@ -78,7 +78,13 @@ resource "aws_lambda_function" "backend_brain" {
 # the lambda function url
 resource "aws_lambda_function_url" "brain_door" {
   function_name      = aws_lambda_function.backend_brain.function_name
-  authorization_type = "NONE" # this makes it accessible by anyone on the internet
+  authorization_type = "NONE"
+
+  # this tlls the browser it is safe to let the website read this data
+  cors {
+    allow_origins = ["*"]
+    allow_methods = ["*"]
+  }
 }
 
 # this is the access point of my function
