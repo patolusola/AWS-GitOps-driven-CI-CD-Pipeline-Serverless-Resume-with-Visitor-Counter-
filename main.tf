@@ -154,3 +154,51 @@ resource "aws_iam_role_policy" "lambda_dynamodb_policy" {
     ]
   })
 }
+
+
+# this here is to add cloudfront distribution which makes the connection secure and gives 100% uptime (global cdn & https)
+resource "aws_cloudfront_distribution" "portfolio_cdn" {
+  enabled             = true
+  is_ipv6_enabled     = true
+  default_root_object = "index.html"
+
+  origin {
+    # where it is originated
+    domain_name = aws_s3_bucket.frontend_bucket.bucket_regional_domain_name
+    origin_id   = "S3-Portfolio-Origin"
+  }
+
+  default_cache_behavior {
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "S3-Portfolio-Origin"
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+
+    # this line forces mobile browsers to upgrade to secure HTTPS
+    viewer_protocol_policy = "redirect-to-https"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = true
+  }
+}
+
+# an output the new and secure url
+output "secure_cloudfront_url" {
+  value = aws_cloudfront_distribution.portfolio_cdn.domain_name
+}
