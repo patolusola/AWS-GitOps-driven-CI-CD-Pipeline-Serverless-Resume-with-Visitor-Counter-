@@ -35,9 +35,9 @@
     <section id="about" class="about-section">
         <h2>About Me</h2>
         <div class="about-content">
-            <p>I am a Cloud Engineer based in the UK, specializing in building scalable, serverless architectures and automated CI/CD pipelines. With a strong foundation in AWS, Terraform, and Python, I focus on provisioning secure and highly available infrastructure.</p>
-            <p>My professional journey is unique. My background spans from executing digital marketing and web design as the Co-founder of DSGNCorp, to developing a rigorous, person-centered work ethic in the UK healthcare and adult care sector. This combination means I approach technical engineering with exceptional attention to procedural accuracy, empathy for end-users, and a pragmatic, solution-oriented mindset.</p>
-            <p>Whether I am designing a GitOps pipeline or automating cloud processes, I am driven by a passion for continuous learning and delivering impactful digital solutions.</p>
+            <p>I am an AWS Cloud Engineer, with speciality in building scalable, serverless architectures and automated CI/CD pipelines. I know how to use the Linux operating system proficiently, I have a strong foundation in AWS, Terraform, Docker, Kubernetes, and Python, I focus on provisioning secure and highly available infrastructure.</p>
+            <p>My professional journey is unique. My background spans from executing digital marketing campaigns, and website designs, to working in the entertainment industry as an artiste manager, A&R executive, and strategist - developing a rigorous, relentless work ethic. This combination means I approach technical engineering with exceptional attention to procedural accuracy, empathy for end-users, and a pragmatic, solution-oriented mindset.</p>
+            <p>Whether I am designing a GitOps pipeline or automating cloud processes, I am driven by a passion for continuous learning and delivering impactful digital solutions. I am confident in my abilities and expertise to deliver impactful results for a forward-thinking organization.</p>
         </div>
     </section>
 
@@ -47,8 +47,9 @@
         <div class="project-grid">
             
             <div class="project-card">
-                <h3>Serverless Image Processing & AI Analysis Pipeline (image decompression)</h3>
+                <h3><a href="https://d1mgg50yc8h5p3.cloudfront.net/" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">Serverless Image Processing & AI Analysis Pipeline (image decompression)</a></h3>
                 <p>This project is a cloud-native, event-driven application designed to automatically process and analyse user-uploaded images. It leverages serverless architecture to perform real-time image resizing and integrates AI capabilities to extract meaningful insights such as object detection from images.</p>
+                <br>
                 <p>The system is built to demonstrate scalable, cost-efficient, and production-ready cloud engineering practices without the need for managing underlying servers.</p>
                 <div class="tags">
                     <span>AWS</span><span>Lambda</span><span>Amazon Rekognition (AI)</span><span>Python</span>
@@ -56,15 +57,39 @@
             </div>
 
             <div class="project-card">
-                <h3>Zero-Touch AWS GitOps & CI/CD Pipeline (Serverless Resume with a Visitor Counter)</h3>
+                <h3><a href="https://d32gzz129rujf1.cloudfront.net" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">Zero-Touch AWS GitOps & CI/CD Pipeline (Serverless Resume with a Visitor Counter)</a></h3>
                 <p>This project is a fully automated deployment pipeline that provisions a multi-environment serverless web application (Serverless Resume with a Visitor Counter) hosted on AWS serverless architecture using S3, Lambda, DynamoDB, and Terraform.</p>
-                <p>It features a public frontend with a dynamic API backend and I made use of Terraform for Infrastructure as Code (IaC) alongside Github actions for continuous integration and delivery, demonstrating a zero-console way to manage cloud infrastructure, test code and deploy application.</p>
-                <p>It is simple to code but proves that I can connect critical cloud architecture components.</p>
+                <br>
+                <p>It features a public frontend with a dynamic API backend and I made use of Terraform for Infrastructure as Code (IaC) alongside Github actions for continuous integration and delivery, demonstrating a zero-console way to manage cloud infrastructure, test code and deploy application. It proves that I can connect critical cloud architecture components.</p>
                 <div class="tags">
                     <span>DynamoDB</span><span>Terraform</span><span>GitHub Actions</span><span>Python</span>
                 </div>
             </div>
 
+        </div><br>
+
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <h3><a href="#" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">Serverless Volunteer & Shift Management API (WIP)</a></h3>
+                <p>Most organisations within the health and social care sectors — such as those managing residential care homes or community outreach — struggle with coordinating shift workers and volunteers efficiently.</p>
+                <br>
+                <p>The idea is to create a serverless backend system using API Gateway, AWS Lambda (Python), and DynamoDB to track volunteer availability and log shift hours. By keeping it serverless, the organisation pays nothing when the system is idle overnight.</p>
+                <div class="tags">
+                    <span>AWS</span><span>Lambda</span><span>API Gateway</span><span>DynamoDB</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3><a href="#" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">Automated Cloud Cost Guardrails & Alerting (WIP)</a></h3>
+                <p>A lot of charities hesitate to adopt cloud computing because they are terrified of accidental billing spikes.</p>
+                <br>
+                <p>I am writing a Python automation script that would be deployed on AWS Lambda with a job: to frequently query the AWS Cost Explorer API. If the projected spend exceeds a defined micro-budget (e.g., $15/month), the function uses Amazon SNS to immediately push an alert to the organisation's Slack channel or email.</p>
+                <div class="tags">
+                    <span>AWS Cost Explorer API</span><span>Lambda</span><span>Amazon SNS</span><span>Python</span>
+                </div>
+            </div>
+            
         </div>
     </section>
 
