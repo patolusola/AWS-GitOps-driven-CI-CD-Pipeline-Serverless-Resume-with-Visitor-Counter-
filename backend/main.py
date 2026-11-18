@@ -7,7 +7,7 @@ dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('serverless-database')
 ses = boto3.client('ses', region_name='us-east-1')
 
-MY_EMAIL = "your.email@example.com"
+MY_EMAIL = "itspatolusola@gmail.com"
 
 def handler(event, context):
     # Ignore favicon requests
