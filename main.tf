@@ -202,3 +202,25 @@ resource "aws_cloudfront_distribution" "portfolio_cdn" {
 output "secure_cloudfront_url" {
   value = aws_cloudfront_distribution.portfolio_cdn.domain_name
 }
+
+# 15. Verify your email address in AWS SES
+resource "aws_ses_email_identity" "contact_email" {
+  email = "itspatolusola@gmail.com"
+}
+
+# 16. Give Lambda permission to send emails via SES
+resource "aws_iam_role_policy" "lambda_ses_policy" {
+  name = "lambda-ses-policy"
+  role = aws_iam_role.lambda_role.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action   = ["ses:SendEmail", "ses:SendRawEmail"]
+        Effect   = "Allow"
+        Resource = "*"
+      }
+    ]
+  })
+}

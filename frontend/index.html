@@ -14,6 +14,7 @@
             <a href="#hero">Home</a>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
+            <a href="#contact-form">Contact</a>
             <button id="theme-toggle" class="theme-btn">☀️ Light Mode</button>
         </div>
     </nav>
@@ -62,7 +63,7 @@
                 <br>
                 <p>It features a public frontend with a dynamic API backend and I made use of Terraform for Infrastructure as Code (IaC) alongside Github actions for continuous integration and delivery, demonstrating a zero-console way to manage cloud infrastructure, test code and deploy application. It proves that I can connect critical cloud architecture components.</p>
                 <div class="tags">
-                    <span>AWS S3, IAM + CloudFront</span><span>DynamoDB</span><span>Terraform</span><span>GitHub Actions</span><span>Python</span><span>Lambda</span><span>HTML5, CSS3, JavaScript (Vanilla)</span>
+                    <span>AWS S3, IAM + CloudFront</span><span>DynamoDB</span><span>Terraform</span><span>GitHub Actions</span><span>Python</span><span>Lambda</span><span>HTML5, CSS3, JavaScript (Vanilla)</span><span>Amazon SES</span>
                 </div>
             </div>
 
@@ -93,6 +94,18 @@
         </div>
     </section>
 
+    <!-- Contact Form Section (Place right above <footer>) -->
+    <section id="contact-form">
+        <h2>Hit Me, Let's Work</h2>
+        <form id="portfolio-contact-form" class="contact-form">
+            <input type="text" id="contact-name" placeholder="Your Name" required>
+            <input type="email" id="contact-email" placeholder="Your Email" required>
+            <textarea id="contact-message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit" id="submit-btn" class="btn">Send Message</button>
+            <p id="form-status" class="form-status"></p>
+        </form>
+    </section>
+
     <!-- Footer & Visitor Counter -->
     <footer id="contact">
         <div class="counter-box">
@@ -101,6 +114,6 @@
         <p>Connect with me on <a href="https://www.linkedin.com/in/patolusola/" target="_blank" rel="noopener" >LinkedIn</a> or <a href="https://github.com/patolusola" target="_blank" rel="noopener" >GitHub</a></p>
     </footer>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=3"></script>
 </body>
 </html>

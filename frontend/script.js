@@ -32,3 +32,45 @@ async function getVisitorCount() {
 }
 
 getVisitorCount();
+
+// === CONTACT FORM LOGIC === //
+const contactForm = document.getElementById('portfolio-contact-form');
+const formStatus = document.getElementById('form-status');
+const submitBtn = document.getElementById('submit-btn');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        formStatus.textContent = "";
+
+        const payload = {
+            name: document.getElementById('contact-name').value,
+            email: document.getElementById('contact-email').value,
+            message: document.getElementById('contact-message').value
+        };
+
+        try {
+            const response = await fetch(apiURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                formStatus.style.color = "#38bdf8";
+                formStatus.textContent = "Message sent! I'll get back to you soon.";
+                contactForm.reset();
+            } else {
+                throw new Error("Server error");
+            }
+        } catch (error) {
+            formStatus.style.color = "#f87171";
+            formStatus.textContent = "Something went wrong. Please try again later.";
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Send Message";
+        }
+    });
+}
