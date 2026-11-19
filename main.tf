@@ -175,7 +175,6 @@ resource "aws_cloudfront_distribution" "portfolio_cdn" {
 
     forwarded_values {
       query_string = true
-      headers      = ["Authorization", "Access-Control-Allow-Origin", "*"]
       cookies {
         forward = "none"
       }
