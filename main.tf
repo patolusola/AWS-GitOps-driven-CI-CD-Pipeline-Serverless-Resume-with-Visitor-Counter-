@@ -84,6 +84,7 @@ resource "aws_lambda_function_url" "brain_door" {
   cors {
     allow_origins = ["*"]
     allow_methods = ["*"]
+    allow_headers = ["*"]
   }
 }
 
