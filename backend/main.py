@@ -39,10 +39,15 @@ def handler(event, context):
                 Destination={'ToAddresses': [MY_EMAIL]},
                 ReplyToAddresses=[sender_email] if '@' in sender_email else [],
                 Message={
-                    'Subject': {'Data': f"Portfolio Contact from {name}"},
+                    'Subject': {'Data': f"New Portfolio Inquiry from {name}"},
                     'Body': {
                         'Text': {
-                            'Data': f"Name: {name}\nEmail: {sender_email}\n\nMessage:\n{message}"
+                            'Data': (
+                    "You received a new message from your portfolio contact form.\n\n"
+                    f"Sender Name: {name}\n"
+                    f"Sender Email: {sender_email}\n\n"
+                    f"Message:\n{message}"
+                            )
                         }
                     }
                 }
