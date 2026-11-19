@@ -169,12 +169,13 @@ resource "aws_cloudfront_distribution" "portfolio_cdn" {
   }
 
   default_cache_behavior {
-    allowed_methods  = ["GET", "HEAD"]
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
     target_origin_id = "S3-Portfolio-Origin"
 
     forwarded_values {
-      query_string = false
+      query_string = true
+      headers      = ["Authorization", "Access-Control-Allow-Origin", "*"]
       cookies {
         forward = "none"
       }
@@ -183,8 +184,8 @@ resource "aws_cloudfront_distribution" "portfolio_cdn" {
     # this line forces mobile browsers to upgrade to secure HTTPS
     viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
-    default_ttl            = 3600
-    max_ttl                = 86400
+    default_ttl            = 0
+    max_ttl                = 0
   }
 
   restrictions {
